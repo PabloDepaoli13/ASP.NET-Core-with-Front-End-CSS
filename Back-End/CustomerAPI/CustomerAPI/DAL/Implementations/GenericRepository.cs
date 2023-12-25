@@ -15,7 +15,7 @@ namespace CustomerAPI.DAL.Implementations
         }
 
        
-        public async Task<bool> Create(T entity)
+        public async Task<bool> CreateCustomer(T entity)
         {
             {
                 bool result;

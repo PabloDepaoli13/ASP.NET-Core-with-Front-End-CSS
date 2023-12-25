@@ -8,7 +8,7 @@ namespace CustomerAPI.DAL.Repositories
 
         Task<IEnumerable<T>> GetAll();
 
-        Task<bool> Create(T entity);
+        Task<bool> CreateCustomer(T entity);
 
         Task<bool> Update(T entity);    
 

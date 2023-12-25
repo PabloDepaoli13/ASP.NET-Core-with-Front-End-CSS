@@ -17,6 +17,14 @@ builder.Services.AddDbContext<AplicationDbContext>(e => e.UseSqlServer(builder.C
 
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+//Creamos el Cors para permitir el acceso a la API desde cualquier origen, cabecera o metodo.
+builder.Services.AddCors(opt 
+    => opt.AddPolicy("PolicyCors", build 
+    =>{
+        build.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+    }
+));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,5 +39,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//Le decimos al constructor que vamos a utilizar el Cors ya definido.
+app.UseCors("PolicyCors");
 
 app.Run();

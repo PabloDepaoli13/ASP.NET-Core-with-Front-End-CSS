@@ -40,9 +40,22 @@ namespace CustomerAPI.Controllers
 
         [HttpPost]
 
-        public async Task<bool> CreateCustomer(CreateCustomerDTO customerNew)
+        public async Task<IActionResult> CreateCustomer(CreateCustomerDTO customerNew)
         {
-            throw new NotImplementedException();
+            var customer = new CustomerDTO
+            {
+                FirstName = customerNew.FirstName,
+                LastName = customerNew.LastName,
+                Address= customerNew.Address,
+                Email= customerNew.Email,   
+                Phone = customerNew.Phone
+            };
+            bool result = await _repository.CreateCustomer(customer);
+            if (!result)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "No se pudo cargar en el servidor"});
+            }
+            return StatusCode(StatusCodes.Status200OK, new {message = "Cargado con exito"});
         }
 
         [HttpPut]

@@ -1,30 +1,36 @@
-function search(){
-    var resultado = [
-    {
-        "id": 123,
-        "address": "unknowm",
-        "email": "unknowm",
-        "firstname": "unknowm",
-        "lastname": "unknowm",
-        "phone": "unknowm"
+const URL_API = 'http://localhost:5024/api/'
 
-    },
-    {
-        "id": 456,
-        "address": "unknowm",
-        "email": "unknowm",
-        "firstname": "unknowm",
-        "lastname": "unknowm",
-        "phone": "unknowm"
+document.addEventListener("DOMContentLoaded", init)
 
-    }]
+async function init(){
+    await search()
+}
 
-    var row = `       
-    <tr>
-    <td>Prueba2</td>
-    <td>Prueba2</td>
-    <td>Prueba2</td>
-    <td>Prueba2</td>
-    <td><a href="#" class="button">Eliminar</a><a href="#" class="button">Editar</a></td>
+ async function search(){
+    var url = URL_API + 'customer';
+    var response = await fetch(url, {
+        "method": 'GET',
+        "mode": 'cors',
+        "headers": {
+            "Content-Type": 'aplication/json'
+        }
+    }).then(response => response.json());
+
+    console.log(response)
+    
+    var $html = '';
+
+    for(customer of response){
+        var row = `<tr>
+        <td>${customer.firstName}</td>
+        <td>${customer.lastName}</td>
+        <td>${customer.email}</td>
+        <td>${customer.phone}</td>
+        <td><a href="#" class="button">Eliminar</a><a href="#" class="button">Editar</a></td>
     </tr>`;
+    $html += row;
+    }
+    
+    document.querySelector('#customers > tbody').outerHTML = $html; 
+    
 }
