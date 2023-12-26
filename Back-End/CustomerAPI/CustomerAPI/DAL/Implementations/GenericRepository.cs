@@ -7,7 +7,7 @@ namespace CustomerAPI.DAL.Implementations
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private AplicationDbContext _context;
+        private readonly AplicationDbContext _context;
 
         public GenericRepository(AplicationDbContext context)
         {
@@ -19,7 +19,7 @@ namespace CustomerAPI.DAL.Implementations
         {
             {
                 bool result;
-                _context.Add(entity);
+                _context.Set<T>().Add(entity);
                 result = await _context.SaveChangesAsync() > 0;
                 if (!result)
                 {
@@ -29,9 +29,19 @@ namespace CustomerAPI.DAL.Implementations
             }
         }
 
-        public Task<bool> DeleteById(int id)
+        public async Task<bool> DeleteById(int id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            var entity = await GetById(id);
+            if (entity == null)
+            {
+                return result;
+            }
+            _context.Remove(entity);
+            result = await _context.SaveChangesAsync() > 0;
+            return result;
+
+            
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -39,14 +49,17 @@ namespace CustomerAPI.DAL.Implementations
             return await _context.Set<T>().ToListAsync();
         }
 
-        public Task<T> GetById(int id)
+        public async Task<T> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public Task<bool> Update(T entity)
+        public async Task<bool> Update(T entity)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            _context.Set<T>().Update(entity);
+            result = await _context.SaveChangesAsync() > 0;
+            return result;
         }
     }
 }

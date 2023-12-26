@@ -9,7 +9,7 @@ namespace CustomerAPI.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private IGenericRepository<CustomerDTO> _repository;
+        private readonly IGenericRepository<CustomerDTO> _repository;
 
         public CustomerController(IGenericRepository<CustomerDTO> repository)
         {
@@ -18,24 +18,43 @@ namespace CustomerAPI.Controllers
 
         [HttpGet]
 
-        public async Task<IEnumerable<CustomerDTO>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers()
         {
             var customers = await _repository.GetAll();
-            return customers;
+            if (customers == null)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new {customers});
+            }
+            return StatusCode(StatusCodes.Status200OK, new { customers });
         }
 
         [HttpGet("{id}")]
 
-        public async Task<CustomerDTO> GetCustomer(long id)
+        public async Task<ActionResult<CustomerDTO>> GetCustomer(int id)
         {
-            throw new NotImplementedException();
+            var customers = await _repository.GetById(id);
+            if (customers == null)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new { customers });
+            }
+            return StatusCode(StatusCodes.Status200OK, new { customers });
         }
 
         [HttpDelete("{id}")]
 
-        public async Task<bool> DeleteCustomer()
+        public async Task<ActionResult<bool>> DeleteCustomer(int id)
         {
-            throw new NotImplementedException();
+            var customers = await _repository.GetById(id);
+            if (customers == null)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new { customers });
+            }
+            bool result = await _repository.DeleteById(id);
+            if (!result)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { result });
+            }
+            return StatusCode(StatusCodes.Status200OK, new { result });
         }
 
         [HttpPost]
@@ -60,9 +79,14 @@ namespace CustomerAPI.Controllers
 
         [HttpPut]
 
-        public async Task<bool> UpdateCustomer(CustomerDTO customerUpdate)
+        public async Task<ActionResult<bool>> UpdateCustomer(CustomerDTO customerUpdate)
         {
-            throw new NotImplementedException();
+            bool result = await _repository.Update(customerUpdate);
+            if (!result)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { result });
+            }
+            return StatusCode(StatusCodes.Status200OK, new { result });
         }
     }
 
