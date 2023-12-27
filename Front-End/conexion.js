@@ -26,11 +26,29 @@ async function init(){
         <td>${customer.lastName}</td>
         <td>${customer.email}</td>
         <td>${customer.phone}</td>
-        <td><a href="#" class="button">Eliminar</a><a href="#" class="button">Editar</a></td>
+        <td><a href="#" onclick="remove(${customer.id})" class="button">Eliminar</a>
+        <a href="#" class="button">Editar</a></td>
     </tr>`;
     $html += row;
     }
     
     document.querySelector('#customers > tbody').outerHTML = $html; 
     
+}
+
+async function remove(id){
+    result = confirm('¿Estas seguro de querer eliminar este elemento de la lista?');
+    if(!result){
+        return console.log('Cancelado');
+    }
+    var url = URL_API + 'customer/' + id;
+    await fetch(url, {
+        "method": 'DELETE',
+        "mode": 'cors',
+        "headers": {
+            "Content-Type": 'aplication/json'
+        }
+    });
+    window.location.reload();
+    return console.log("Eliminado");
 }

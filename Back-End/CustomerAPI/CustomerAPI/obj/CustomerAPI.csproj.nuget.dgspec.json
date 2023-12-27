@@ -1,31 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pablo Pc\\Desktop\\Programacion\\Proyectos C# Entity Framework\\ASP.NET.CSS\\ASP.NET-Core-with-Front-End-CSS\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj": {}
+    "C:\\Users\\DELL\\Desktop\\Programing Bitwise\\.NET Projects\\ASP.NET-Core-with-Front-End-CSS-\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pablo Pc\\Desktop\\Programacion\\Proyectos C# Entity Framework\\ASP.NET.CSS\\ASP.NET-Core-with-Front-End-CSS\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj": {
+    "C:\\Users\\DELL\\Desktop\\Programing Bitwise\\.NET Projects\\ASP.NET-Core-with-Front-End-CSS-\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pablo Pc\\Desktop\\Programacion\\Proyectos C# Entity Framework\\ASP.NET.CSS\\ASP.NET-Core-with-Front-End-CSS\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\Programing Bitwise\\.NET Projects\\ASP.NET-Core-with-Front-End-CSS-\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj",
         "projectName": "CustomerAPI",
-        "projectPath": "C:\\Users\\Pablo Pc\\Desktop\\Programacion\\Proyectos C# Entity Framework\\ASP.NET.CSS\\ASP.NET-Core-with-Front-End-CSS\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj",
-        "packagesPath": "C:\\Users\\Pablo Pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pablo Pc\\Desktop\\Programacion\\Proyectos C# Entity Framework\\ASP.NET.CSS\\ASP.NET-Core-with-Front-End-CSS\\Back-End\\CustomerAPI\\CustomerAPI\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\Desktop\\Programing Bitwise\\.NET Projects\\ASP.NET-Core-with-Front-End-CSS-\\Back-End\\CustomerAPI\\CustomerAPI\\CustomerAPI.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\Desktop\\Programing Bitwise\\.NET Projects\\ASP.NET-Core-with-Front-End-CSS-\\Back-End\\CustomerAPI\\CustomerAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Pablo Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
