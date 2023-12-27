@@ -2,6 +2,7 @@
 using CustomerAPI.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace CustomerAPI.Controllers
 {
@@ -25,6 +26,10 @@ namespace CustomerAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status404NotFound, new {customers});
             }
+
+            //Creating a message from Serilog
+            Log.Information("This is a new message from logging, your object => {@customers}", customers);
+
             return StatusCode(StatusCodes.Status200OK, new { customers });
         }
 

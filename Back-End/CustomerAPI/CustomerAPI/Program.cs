@@ -2,8 +2,26 @@ using CustomerAPI.DAL.DataContext;
 using CustomerAPI.DAL.Implementations;
 using CustomerAPI.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration).CreateLogger();
+
+/*      Otras formas de implementarlo
+        .MinimumLevel.Information()
+        .WriteTo.Console()
+        .WriteTo.File("logs/newLogs.txt", rollingInterval: RollingInterval.Day)
+         .CreateLogger();
+
+    */
+builder.Host.UseSerilog();   //Using this you can use the requestloggin of serilog and see things like the request that make an user
+// Add services to the container.
+
+
 
 // Add services to the container.
 
@@ -33,6 +51,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+
+app.UseSerilogRequestLogging();
+
 
 app.UseHttpsRedirection();
 
