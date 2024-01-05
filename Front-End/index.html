@@ -24,17 +24,26 @@
     <div class="modal-header">
       <form class="modal-content animate" action="/action_page.php" method="post">
         <div class="imgcontainer">
-          <img src="/img/logoLogin.png" alt="Avatar" class="avatar">
+          <img src="/img/logo.jpg" alt="Avatar" class="avatar">
         </div>
     
         <div class="container">
-          <label for="uname"><b>Usuario</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <label for="uname"><b>Nombre</b></label>
+          <input type="text" placeholder="Ingresar Nombre" id="agr-name" required>
     
-          <label for="psw"><b>Contraseña</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <label for="psw"><b>Apellido</b></label>
+          <input type="text" placeholder="Ingresar Apellido" id="agr-ape" required>
+
+          <label for="em"><b>Email</b></label>
+          <input type="text" placeholder="Ingresar Email" id="agr-em" required>
+
+          <label for="tel"><b>Telefono</b></label>
+          <input type="text" placeholder="Ingresar Telefono" id="agr-pho" required>
+
+          <label for="adr"><b>Direccion</b></label>
+          <input type="text" placeholder="Ingresar Direccion" id="agr-dir" required>
             
-          <button type="submit">Iniciar Sesion</button>
+          <button type="submit" id="btnAgregarCust">Agregar</button>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Recordarme
           </label>
@@ -42,7 +51,8 @@
     
         <div class="container" style="background-color:#f1f1f1">
           <button type="button" id="btnClose" class="cancelbtn">Cerrar</button>
-          <span class="psw">Olvidaste tu <a href="#">contraseña?</a></span>
+        </div>
+        <div class="space"></div>
         </div>
       </form>
     </div>

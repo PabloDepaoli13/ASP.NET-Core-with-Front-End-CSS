@@ -1,4 +1,5 @@
-const URL_API = 'http://localhost:5024/api/'
+const d = document ,URL_API = 'http://localhost:5024/api/';
+
 
 document.addEventListener("DOMContentLoaded", init)
 
@@ -14,7 +15,8 @@ async function init(){
         "headers": {
             "Content-Type": 'aplication/json'
         }
-    }).then(response => response.json());
+    }).then(response => response.json())
+    .then(response => response = response.customers);
 
     console.log(response)
     
@@ -27,7 +29,7 @@ async function init(){
         <td>${customer.email}</td>
         <td>${customer.phone}</td>
         <td><a href="#" onclick="remove(${customer.id})" class="button">Eliminar</a>
-        <a href="#" class="button">Editar</a></td>
+        <a href="#" class="button" onclick="update($customer.id)">Editar</a></td>
     </tr>`;
     $html += row;
     }
@@ -52,3 +54,31 @@ async function remove(id){
     window.location.reload();
     return console.log("Eliminado");
 }
+
+async function update(data){
+    var url = URL_API + 'customer';
+    var response = await fetch(url, {
+        "method": 'POST',
+        "body": JSON.stringify(data),
+        "mode": 'cors',
+        "headers": {
+            "Content-Type": 'application/json; charset=utf-8'
+        }
+    });
+    window.location.reload();
+    return console.log(response);
+ }
+
+async function create(data){
+    var url = URL_API + 'customer';
+    var response = await fetch(url, {
+        "method": 'POST',
+        "body": JSON.stringify(data),
+        "mode": 'cors',
+        "headers": {
+            "Content-Type": 'application/json; charset=utf-8'
+        }
+    });
+    window.location.reload();
+    return console.log(response);
+ }
